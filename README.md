@@ -1,13 +1,13 @@
-# Configuration
+# dotfiles
 
 Configurations for various Linux and Windows things
 
 ------------
 
-Conky
+# Conky
 Place file 'conky.conf' in /etc/conky/ or edit exisitng /home/user/.conkyrc with content
 
 ------------
 
-ncmpcpp
+# ncmpcpp
 Place file 'config' in /home/user/.ncmpcpp/
