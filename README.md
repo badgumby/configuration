@@ -10,6 +10,10 @@ Configurations for various Linux and Windows things
 ###### ncmpcpp
 > Place file 'config' in /home/$USER/.ncmpcpp/
 
+###### mopidy
+> Place file 'mopidy.conf' in /home/$USER/.config/mopidy/
+> Install mopidy-gmusic to use with Google Play Music
+
 ###### rofi
 > Place file 'config' in /home/$USER/.config/rofi/
 
