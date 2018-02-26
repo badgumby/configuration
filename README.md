@@ -12,6 +12,7 @@ Configurations for various Linux and Windows things
 
 ###### mopidy
 > Place file 'mopidy.conf' in /home/$USER/.config/mopidy/
+
 > Install mopidy-gmusic to use with Google Play Music
 
 ###### rofi
