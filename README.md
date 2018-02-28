@@ -5,7 +5,7 @@ Configurations for various Linux and Windows things
 > Place file 'conky.conf' in /etc/conky/ or edit exisitng /home/$USER/.conkyrc with content
 
 ###### hunter
-> Place file 'hunter' in /usr/sbin/
+> Place file 'hunter' in /usr/sbin/ and chmod +x
 
 > Simple search GUI for linux find using zenity
 
