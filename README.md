@@ -4,6 +4,11 @@ Configurations for various Linux and Windows things
 ###### conky
 > Place file 'conky.conf' in /etc/conky/ or edit exisitng /home/$USER/.conkyrc with content
 
+###### hunter
+> Place file 'hunter' in /usr/sbin/
+
+> Simple search GUI for linux find using zenity
+
 ###### hyper
 > Place file '.hyper.js' in /home/$USER/
 
