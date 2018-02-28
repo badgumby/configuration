@@ -1,12 +1,5 @@
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! Copyright: Rasmus Steinke
-! ------------------------------------------------------------------------------
 rofi.color-enabled: true
-rofi.color-window: #273238, #273238, #1e2529
-rofi.color-normal: #273238, #c1c1c1, #273238, #394249, #ffffff
-rofi.color-active: #273238, #80cbc4, #273238, #394249, #80cbc4
-rofi.color-urgent: #273238, #ff1844, #273238, #394249, #ff1844
+rofi.theme: ~/.config/rofi/themes/material.rasi
 ! Enabled modi
 rofi.modi: window,run,ssh
 ! Window opacity
@@ -28,17 +21,17 @@ rofi.xoffset: 0
 ! Always show number of lines
 rofi.fixed-num-lines: false
 ! Terminal to use
-rofi.terminal: rofi-sensible-terminal
+rofi.terminal: xfce4-terminal
 ! Ssh client to use
 rofi.ssh-client: ssh
 ! Ssh command to execute
-rofi.ssh-command: {terminal} -e {ssh-client} {host}
+rofi.ssh-command: {terminal} --tab --drop-down --title={host} --command="{ssh-client} {host}"
 ! Run command to execute
 rofi.run-command: {cmd}
 ! Command to get extra run targets
 rofi.run-list-command:
 ! Run command to execute that runs in shell
-rofi.run-shell-command: {terminal} -e {cmd}
+rofi.run-shell-command: {terminal} --command={cmd}
 ! Disable history in run/ssh
 rofi.disable-history: false
 ! Use levenshtein sorting
@@ -46,7 +39,7 @@ rofi.levenshtein-sort: false
 ! Set case-sensitivity
 rofi.case-sensitive: false
 ! Enable sidebar-mode
-rofi.sidebar-mode: true
+rofi.sidebar-mode: false
 ! Set lazy filter limit
 rofi.lazy-filter-limit: 15000
 ! Row height (in chars)
@@ -90,7 +83,7 @@ rofi.kb-primary-paste: Control+Shift+v,Shift+Insert
 ! Keybinding
 rofi.kb-secondary-paste: Control+v,Insert
 ! Keybinding
-rofi.kb-clear-line: Control+u
+#rofi.kb-clear-line: Control+u
 ! Keybinding
 rofi.kb-move-front: Control+a
 ! Keybinding
