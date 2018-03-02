@@ -23,5 +23,8 @@ Configurations for various Linux and Windows things
 ###### rofi
 > Place file 'config' in /home/$USER/.config/rofi/
 
+###### terminal-colors
+> Hexadecimal color codes for any terminal that doesn't support external schemes (tilda)
+
 ###### xrandr
 > Files are shell scripts to set predefined monitor configurations using xrandr
