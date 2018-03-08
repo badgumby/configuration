@@ -23,6 +23,11 @@ Configurations for various Linux and Windows things
 ###### rofi
 > Place file 'config' in /home/$USER/.config/rofi/
 
+###### scrot-gui
+> Place file 'scrot-gui' in /usr/sbin/ and chmod +x. Bind to PrintScreen button.
+
+> Simple screenshot GUI for linux scrot command using zenity
+
 ###### terminal-colors
 > Hexadecimal color codes for any terminal that doesn't support external schemes (tilda)
 

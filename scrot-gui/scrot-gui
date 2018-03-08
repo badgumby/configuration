@@ -1,0 +1,9 @@
+#!/bin/bash
+
+spath=$(zenity --title 'scrot-gui' --file-selection --save --confirm-overwrite --file-filter="*.png")
+
+if echo "$spath" | grep -q "\.png$"; then
+  scrot -s $spath
+else
+  scrot -s $spath.png
+fi
