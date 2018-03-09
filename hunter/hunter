@@ -1,3 +1,5 @@
 #!/bin/bash
 
+# The easiest of scripts created by BAD Gumby
+
 find $HOME -regex ".*$(sleep 1 && zenity --width=400 --title 'Hunter' --entry --ok-label=Go --text 'Enter search term:').*" | zenity --list --width=600 --height=600 --title "Search results" --column "Files"

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# The easiest of scripts created by BAD Gumby
+
 spath=$(zenity --title 'scrot-gui' --file-selection --save --confirm-overwrite --file-filter="*.png")
 
 if echo "$spath" | grep -q "\.png$"; then
