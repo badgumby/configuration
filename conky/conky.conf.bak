@@ -1,0 +1,106 @@
+background no
+#font Sans:size=8
+#xftfont Sans:size=10
+override_utf8_locale yes
+font Hack:size=8
+use_xft yes
+xftalpha 0.9
+update_interval 3.0
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_argb_visual yes
+double_buffer yes
+minimum_size 220 5
+maximum_width 220
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color white
+default_shade_color black
+default_outline_color green
+alignment top_right
+gap_x 12
+gap_y 35
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+uppercase yes # set to yes if you want all text to be in uppercase
+
+TEXT
+
+${goto 80}${exec awk '/PRETTY_NAME=/' /etc/os-release | sed 's/PRETTY_NAME=//' | sed 's/"//g' | awk '{print}'
+}
+${goto 80}KERNEL: ${exec uname -r | sed 's/-generic//'}
+${goto 80}Hostname: ${nodename}
+${goto 80}Uptime: $uptime
+${goto 80}Temperature:${exec echo `sensors -f dell_smm-virtual-0 | grep CPU` | sed 's/CPU://' | sed 's/+//'}
+${image /home/$USER/.conky/logo.png -p -10,0 -s 90x90}
+
+${color white}CPU/RAM ${hr 1}${color}
+
+CPU: ${alignr}${freq} MHz
+Processes: ${alignr}$processes ($running_processes running)
+Load: ${alignr}$loadavg
+
+CPU1 ${alignr}${cpu cpu1}%
+${cpubar 4 cpu1}
+CPU2 ${alignr}${cpu cpu2}%
+${cpubar 4 cpu2}
+CPU3 ${alignr}${cpu cpu3}%
+${cpubar 4 cpu3}
+CPU4 ${alignr}${cpu cpu4}%
+${cpubar 4 cpu4}
+
+Ram ${alignr}$mem / $memmax ($memperc%)
+${membar 4}
+
+#swap ${alignr}$swap / $swapmax ($swapperc%)
+#${swapbar 4}
+
+Highest CPU${goto 120}CPU%${alignr}PID
+${top name 1}${goto 120}${top cpu 1}${alignr}${top pid 1}
+${top name 2}${goto 120}${top cpu 2}${alignr}${top pid 2}
+${top name 3}${goto 120}${top cpu 3}${alignr}${top pid 3}
+
+Highest MEM${goto 120}MEM%${alignr}PID
+${top_mem name 1}${goto 120}${top_mem mem 1}${alignr}${top_mem pid 1}
+${top_mem name 2}${goto 120}${top_mem mem 2}${alignr}${top_mem pid 2}
+${top_mem name 3}${goto 120}${top_mem mem 3}${alignr}${top_mem pid 3}
+
+${color white}Filesystem ${hr 1}${color}
+
+Disk IO:${alignr}${diskio_read} / ${diskio_write}
+Root: ${alignr}${fs_free /} / ${fs_size /}
+${fs_bar 4 /}
+Boot: ${alignr}${fs_free /boot} / ${fs_size /boot}
+${fs_bar 4 /boot}
+
+
+${color white}NETWORK - LAN - ${if_existing /proc/net/route eth0}${addr eth0}${else}N/A${endif} ${hr 1}${color}
+
+Down ${downspeed eth0} k/s ${alignr}Up ${upspeed eth0} k/s
+${downspeedgraph eth0 25,107} ${alignr}${upspeedgraph eth0 25,107}
+Total ${totaldown eth0} ${alignr}Total ${totalup eth0}
+
+${color white}NETWORK - USB - ${if_existing /proc/net/route usb0}${addr usb0}${else}N/A${endif} ${hr 1}${color}
+
+Down ${downspeed usb0} k/s ${alignr}Up ${upspeed usb0} k/s
+${downspeedgraph usb0 25,107} ${alignr}${upspeedgraph usb0 25,107}
+Total ${totaldown usb0} ${alignr}Total ${totalup usb0}
+
+${color white}NETWORK - WLAN - ${if_existing /proc/net/route wlan0}${addr wlan0}${else}N/A${endif} ${hr 1}${color}
+
+Down ${downspeed wlan0} k/s ${alignr}Up ${upspeed wlan0} k/s
+${downspeedgraph wlan0 25,107} ${alignr}${upspeedgraph wlan0 25,107}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}
+
+${color white}BATTERY ${hr 1}${color}
+
+Status:${alignr}${battery}
+Time Remaining:${alignr}${battery_time}
+
+${battery_bar}
