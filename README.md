@@ -33,3 +33,6 @@ Configurations for various Linux and Windows things
 
 ###### xrandr
 > Files are shell scripts to set predefined monitor configurations using xrandr
+
+###### zsh
+> Contains rc file for Z shell - uses oh-my-zsh for themes
