@@ -113,7 +113,8 @@ alias gitcommit='git commit -m " (╯°□°）╯︵ WTF DID YOU COMMIT BRO?"'
 alias yakyak='/home/badgumby/Apps/yakyak-linux-x64/yakyak &'
 alias passgen="correcthorse"
 
-# Pacman/Pacaur
-alias pac-update="pacaur -Syu"
-alias pac-cleanup="pacaur -Qdtq | pacaur -Rs -"
+# Pacman/Aura
+alias pac-update="sudo aura -Syux"
+alias aur-update="sudo aura -Ayux"
+alias pac-cleanup="sudo bash | pacman -Qdtq | pacman -Rs -"
 alias pac-repo="reflector --country 'United States' --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
