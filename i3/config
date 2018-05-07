@@ -4,10 +4,13 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# Recommended installation packages for i3:
+# feh, pa-applet-git, i3lock-fancy-multimonitor
+#
 
 set $mod Mod4
 
@@ -16,13 +19,37 @@ set $mod Mod4
 font pango:DejaVu Sans Mono for Powerline 10
 
 # Configure background
-exec --no-startup-id feh --bg-scale ~/Pictures/solid_abstract.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/Backgrounds/smaller/sys76-nebula.jpg
+
+# Startup applications
+exec --no-startup-id nm-applet
+exec --no-startup-id remmina -i
+exec --no-startup-id pidgin
+exec --no-startup-id run_keybase
+
+# Lock using i3lock mod
+#bindsym $mod+l exec i3lock2
+bindsym $mod+l exec ~/.config/i3/i3lock-fancy-multimonitor/lock -n -p
+
+# Audio Controls (PulseAudio)
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -- -10% && killall -SIGUSR1 i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && killall -SIGUSR1 i3status
+
+# Audio Controls (Amixer)
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec amixer -q set Master toggle
+
+# Screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Configure gaps
 for_window [class="^.*"] border pixel 0
 smart_gaps on
 gaps inner 5
-gaps outer 5
+gaps outer 2
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -60,7 +87,7 @@ bindsym $mod+d exec dmenu_run
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
-bindsym $mod+l focus up
+#bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
@@ -149,7 +176,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Logout' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
