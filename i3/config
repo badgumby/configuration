@@ -10,7 +10,7 @@
 #
 # Recommended installation packages for i3:
 # feh (set background), pa-applet-git (pulseaudio), i3lock-fancy-multimonitor (i3lock modifier),
-# thunar (file manager), ranger (console file manager)
+# thunar (file manager), ranger (console file manager), lxappearance (manage gtk themes)
 #
 
 set $mod Mod4
@@ -56,6 +56,7 @@ gaps inner 5
 gaps outer 2
 
 # Launch Apps in specific workspaces
+for_window [class="Remmina"] move container to workspace 4
 for_window [class="Pidgin"] move container to workspace 5
 for_window [class="VirtualBox"] move container to workspace 6
 
@@ -215,6 +216,7 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+# Example: position top status_command i3status
 bar {
-        position top status_command i3status
+        position top status_command /home/smarta/.config/i3/conky-i3bar
 }
