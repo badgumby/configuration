@@ -19,8 +19,8 @@ order += "load"
 order += "cpu_usage"
 order += "cpu_temperature 0"
 order += "disk /"
-order += "wireless wlp1s0"
-order += "ethernet enp0s31f6"
+order += "wireless wlp59s0"
+order += "ethernet enp0s20f0u4u1i5"
 order += "tztime local"
 order += "battery 0"
 #order += "ipv6"
@@ -57,27 +57,30 @@ cpu_usage {
 
 cpu_temperature 0 {
 	format = " ± %degrees° "
-	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon3/temp1_input"
+	path = "/sys/devices/platform/system76/hwmon/hwmon1/temp1_input"
 	max_threshold = 95
 }
 
+# GPU temp
+#cpu_temperature 0 {
+#	format = " ± %degrees° "
+#	path = "/sys/devices/platform/system76/hwmon/hwmon1/temp1_input"
+#	max_threshold = 95
+#}
+
 disk "/" {
-	format = " Free: %avail / "
+	format = " Free: %avail "
 }
 
-wireless wlp1s0 {
-	format_up = " Wifi: %quality / %essid / %ip "
+wireless wlp59s0 {
+	format_up = " W: %essid / %ip / %quality "
 	format_down = " ☡ WiFi "
 }
 
-ethernet enp0s31f6 {
+ethernet enp0s20f0u4u1i5 {
 	# if you use %speed, i3status requires root privileges
 	format_up =  " Ω: %ip  "
-	format_down = " ∅ enp0s31f6  "
-
-	# termsyn font
-	# format_up =  " ­ %ip "
-	# format_down = " Ð eth0 "
+	format_down = " ∅ enp0s20f0u4u1i5  "
 }
 
 run_watch DHCP {
@@ -89,7 +92,7 @@ run_watch VPN {
 }
 
 tztime local {
-#	format = " %h-%d %H:%M ☰ "
+	#	format = " %h-%d %H:%M ☰ "
 	# termsyn font
-	format = " %h-%d - %H:%M "
+	format = " %a %b %d %Y %l:%M:%S %p"
 }

@@ -9,7 +9,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #
 # Recommended installation packages for i3:
-# feh, pa-applet-git, i3lock-fancy-multimonitor
+# feh (set background), pa-applet-git (pulseaudio), i3lock-fancy-multimonitor (i3lock modifier),
+# thunar (file manager), ranger (console file manager)
 #
 
 set $mod Mod4
@@ -22,14 +23,17 @@ font pango:DejaVu Sans Mono for Powerline 10
 exec --no-startup-id feh --bg-scale ~/Pictures/Backgrounds/smaller/sys76-nebula.jpg
 
 # Startup applications
+exec --no-startup-id pa-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id remmina -i
 exec --no-startup-id pidgin
 exec --no-startup-id run_keybase
+exec --no-startup-id yakyak
 
 # Lock using i3lock mod
 #bindsym $mod+l exec i3lock2
 bindsym $mod+l exec ~/.config/i3/i3lock-fancy-multimonitor/lock -n -p
+bindsym Control+Mod1+Delete exec ~/.config/i3/i3lock-fancy-multimonitor/lock -n -p
 
 # Audio Controls (PulseAudio)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
@@ -50,6 +54,10 @@ for_window [class="^.*"] border pixel 0
 smart_gaps on
 gaps inner 5
 gaps outer 2
+
+# Launch Apps in specific workspaces
+for_window [class="Pidgin"] move container to workspace 5
+for_window [class="VirtualBox"] move container to workspace 6
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
