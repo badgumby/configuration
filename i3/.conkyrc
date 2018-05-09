@@ -36,50 +36,69 @@ conky.config = {
 conky.text = [[
 [
     {
-      "full_text": "⚓:${exec uname -r | sed 's/-generic//'} ",
-      "color": "\#FFFFFF"
+      "full_text": "<span font='font-logos'></span> ${exec uname -r | sed 's/-generic//'} ",
+      "color": "\#42CBF4",
+      "markup": "pango"
     },
 
-${if_up enp58s0f1} {"full_text": ${addr enp58s0f1},"min_width": "Ω:255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
-    ${if_up enp0s20f0u4u1i5} {"full_text": "Ω:${addr enp0s20f0u4u1i5}","min_width": "Ω:255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
-        {"full_text": "Ω:N/A","min_width": "Ω:N/A","align": "center","color": "\#FF0000"},\
+${if_up enp58s0f1} {"full_text": ${addr enp58s0f1},"min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
+    ${if_up enp0s20f0u4u1i5} {"full_text": " ${addr enp0s20f0u4u1i5}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
+        {"full_text": " N/A","min_width": " N/A","align": "center","color": "\#FF0000"},\
     ${endif}
 ${endif}
 
-${if_up wlp59s0} {"full_text": "ᛝ:${addr wlp59s0}","min_width": "ᛝ:255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
-    {"full_text": "ᛝ:N/A","min_width": "Ω:N/A","align": "center","color": "\#FF0000"},\
+${if_up wlp59s0} {"full_text": " ${addr wlp59s0}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
+    {"full_text": " N/A","min_width": " N/A","align": "center","color": "\#FF0000"},\
 ${endif}
 
     {
-      "full_text": "⛃:${fs_free /}",
+      "full_text": "⛃${fs_free /}",
       "color": "\#FFFFFF"
     },
     {
-      "full_text": "±:${exec echo `sensors -f system76-isa-0000 | grep "CPU temp"` | sed 's/CPU temperature://' | sed 's/+//'}",
-      "min_width": "±:000.0°",
+      "full_text": "  ${exec echo `sensors -f system76-isa-0000 | grep "CPU temp"` | sed 's/CPU temperature://' | sed 's/+//'}",
+      "min_width": "  000.0°",
       "align": "center",
       "color": "\#FFFFFF"
     },
     {
-      "full_text": "⿻:${cpu cpu0}%",
-      "min_width": "⿻:100%",
+      "full_text": " ${cpu cpu0}%",
+      "min_width": " 100%",
       "align": "center",
       "color": ${if_match ${cpu cpu0}<75}"\#FFFFFF"${else}"\#FF0000"${endif}
     },
     {
-      "full_text": "☰:${memperc}%",
-      "min_width": "☰:100%",
+      "full_text": "☰ ${memperc}%",
+      "min_width": "☰ 100%",
       "align": "center",
       "color": ${if_match ${memperc}<75}"\#FFFFFF"${else}"\#FF0000"${endif}
     },
+
+${if_match ${battery_percent}>15}\
+        ${if_match ${battery_percent}>35}\
+            ${if_match ${battery_percent}>60}\
+                ${if_match ${battery_percent}>80}\
+                    # 100% ish
+                    { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#42F477" }, \
+                ${else}\
+                    # less than 75%
+                    { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#A7F442"}, \
+                ${endif}\
+            ${else}\
+                # less than 50%
+                { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#E2F442" }, \
+            ${endif}\
+        ${else}\
+            # 20ish % charge
+            { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#F4A142" }, \
+        ${endif}\
+    ${else}\
+        #empty battery
+        { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#FF0000" }, \
+${endif}\
+
     {
-      "full_text": "♎:${battery_short} ${battery_time}",
-      "min_width": "♎:F",
-      "align": "left",
-      "color": "\#FFFFFF"
-    },
-    {
-      "full_text": "${time %m/%d/%y%l:%M %p}",
+      "full_text": "${time %m/%d/%y %l:%M %p}",
       "min_width": "12/12/12 12:12 PM",
       "align": "center",
       "color": "\#FFFFFF"

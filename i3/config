@@ -10,8 +10,8 @@
 #
 # Recommended installation packages for i3:
 # feh (set background), pa-applet-git (pulseaudio), i3lock-fancy-multimonitor (i3lock modifier),
-# thunar (file manager), ranger (console file manager), lxappearance (manage gtk themes)
-#
+# thunar (file manager), ranger (console file manager), lxappearance (manage gtk themes),
+# ttf-font-logos (linux logos font pack), ttf-font-awesome-4 (required for conky configured fonts)
 
 set $mod Mod4
 
@@ -20,6 +20,7 @@ set $mod Mod4
 font pango:DejaVu Sans Mono for Powerline 10
 
 # Configure background
+exec --no-startup-id xrandr --output eDP1 --mode 1600x900
 exec --no-startup-id feh --bg-scale ~/Pictures/Backgrounds/smaller/sys76-nebula.jpg
 
 # Startup applications
@@ -29,6 +30,24 @@ exec --no-startup-id remmina -i
 exec --no-startup-id pidgin
 exec --no-startup-id run_keybase
 exec --no-startup-id yakyak
+
+# Set monitor layout
+set $displayMode "Set display mode [s]ingle [t]riple [m]irror"
+bindsym $mod+x mode $displayMode
+mode $displayMode {
+    bindsym s exec "\
+                ~/.screenlayout/Single.sh && \
+                mode "default"
+    bindsym t exec "\
+                ~/.screenlayout/Triple.sh && \
+                mode "default"
+    bindsym m exec "\
+                ~/.screenlayout/Triple-mirror.sh && \
+                mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Lock using i3lock mod
 #bindsym $mod+l exec i3lock2
@@ -149,8 +168,8 @@ set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
 set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
+set $ws5 "5 Pidgin"
+set $ws6 "6 VirtualBox"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -218,5 +237,13 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 # Example: position top status_command i3status
 bar {
-        position top status_command /home/smarta/.config/i3/conky-i3bar
+        position top
+        font pango:DejaVu Sans Mono for Powerline 11, FontAwesome 11
+        status_command /home/smarta/.config/i3/conky-i3bar
+        colors {
+        focused_workspace #000000 #64CE02
+        active_workspace #FFFFFF #0686AD
+        inactive_workspace #FFFFFF #0686AD
+        urgent_workspace #FFFFFF #C4550B
+        }
 }
