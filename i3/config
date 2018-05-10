@@ -11,7 +11,7 @@
 # Recommended installation packages for i3:
 # feh (set background), pa-applet-git (pulseaudio), i3lock-fancy-multimonitor (i3lock modifier),
 # thunar (file manager), ranger (console file manager), lxappearance (manage gtk themes),
-# ttf-font-logos (linux logos font pack), ttf-font-awesome-4 (required for conky configured fonts)
+# ttf-font-logos (linux logos font pack -  < Arch Unicode), ttf-font-awesome-4 (required for conky configured fonts)
 
 set $mod Mod4
 
@@ -19,8 +19,8 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:DejaVu Sans Mono for Powerline 10
 
-# Configure background
-exec --no-startup-id xrandr --output eDP1 --mode 1600x900
+# Configure resolution and background
+exec --no-startup-id xrandr --output "eDP1" --mode "1600x900"
 exec --no-startup-id feh --bg-scale ~/Pictures/Backgrounds/smaller/sys76-nebula.jpg
 
 # Startup applications
@@ -35,15 +35,26 @@ exec --no-startup-id yakyak
 set $displayMode "Set display mode [s]ingle [t]riple [m]irror"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
-    bindsym s exec "\
-                ~/.screenlayout/Single.sh && \
-                mode "default"
-    bindsym t exec "\
-                ~/.screenlayout/Triple.sh && \
-                mode "default"
-    bindsym m exec "\
-                ~/.screenlayout/Triple-mirror.sh && \
-                mode "default"
+
+    bindsym s exec "~/.screenlayout/Single.sh"; mode "default"
+    bindsym t exec "~/.screenlayout/Triple.sh"; mode "default"
+    bindsym m exec "~/.screenlayout/Triple-mirror.sh"; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Move current workspaces to different display
+set $laptopDisplay "eDP1"
+set $monitor1 "DVI-I-1-1"
+set $monitor2 "DVI-I-2-2"
+set $allWorkspaces "Move current workspace to [l]aptop display, monitor [1], or monitor [2]. ESC or ENTER to cancel."
+bindsym $mod+Control+x mode $allWorkspaces
+mode $allWorkspaces {
+
+    bindsym l move workspace to output $laptopDisplay; mode "default"
+    bindsym 1 move workspace to output $monitor1; mode "default"
+    bindsym 2 move workspace to output $monitor2; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -69,7 +80,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Configure gaps
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 5
 smart_gaps on
 gaps inner 5
 gaps outer 2
@@ -79,16 +90,13 @@ for_window [class="Remmina"] move container to workspace 4
 for_window [class="Pidgin"] move container to workspace 5
 for_window [class="VirtualBox"] move container to workspace 6
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+# Colors for borders of containers
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -241,6 +249,7 @@ bar {
         font pango:DejaVu Sans Mono for Powerline 11, FontAwesome 11
         status_command /home/smarta/.config/i3/conky-i3bar
         colors {
+        separator #000000
         focused_workspace #000000 #64CE02
         active_workspace #FFFFFF #0686AD
         inactive_workspace #FFFFFF #0686AD

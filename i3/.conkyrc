@@ -37,71 +37,119 @@ conky.text = [[
 [
     {
       "full_text": "<span font='font-logos'></span> ${exec uname -r | sed 's/-generic//'} ",
-      "color": "\#42CBF4",
-      "markup": "pango"
+      "color": "\#FFFFFF",
+      "name": "Kernel Version",
+      "markup": "pango",
+      "border": "\#42CBF4",
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
+    },
+    {
+      "full_text": " ${uptime} ",
+      "color": "\#FFFFFF",
+      "name": "Uptime",
+      "border": "\#42CBF4",
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
     },
 
-${if_up enp58s0f1} {"full_text": ${addr enp58s0f1},"min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
-    ${if_up enp0s20f0u4u1i5} {"full_text": " ${addr enp0s20f0u4u1i5}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
-        {"full_text": " N/A","min_width": " N/A","align": "center","color": "\#FF0000"},\
+${if_up enp58s0f1} {"full_text": ${addr enp58s0f1},"min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF","border": "\#2ECC71","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},${else}\
+    ${if_up enp0s20f0u4u1i5} {"full_text": " ${addr enp0s20f0u4u1i5}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF","border": "\#2ECC71","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},${else}\
+        {"full_text": " N/A  ","min_width": " N/A ","align": "center","color": "\#FFFFFF","border": "\#FF0000","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},\
     ${endif}
 ${endif}
 
-${if_up wlp59s0} {"full_text": " ${addr wlp59s0}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF"},${else}\
-    {"full_text": " N/A","min_width": " N/A","align": "center","color": "\#FF0000"},\
+${if_up wlp59s0} {"full_text": " ${addr wlp59s0}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF","border": "\#2ECC71","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},${else}\
+    {"full_text": " N/A  ","min_width": " N/A  ","align": "center","color": "\#FFFFFF","border": "\#FF0000","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},\
 ${endif}
 
     {
-      "full_text": "⛃${fs_free /}",
-      "color": "\#FFFFFF"
+      "full_text": " ⛃ ${fs_free /} ",
+      "min_width": " ⛃ 100.0G ",
+      "name": "Root Volume Free",
+      "align": "center",
+      "color": "\#FFFFFF",
+      "border": "\#42CBF4",
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
     },
     {
-      "full_text": "  ${exec echo `sensors -f system76-isa-0000 | grep "CPU temp"` | sed 's/CPU temperature://' | sed 's/+//'}",
-      "min_width": "  000.0°",
+      "full_text": "  ${exec echo `sensors -f system76-isa-0000 | grep "CPU temp"` | sed 's/CPU temperature://' | sed 's/+//'} ",
+      "min_width": "  000.0°F ",
+      "name": "CPU Temp",
       "align": "center",
-      "color": "\#FFFFFF"
+      "color": "\#FFFFFF",
+      "border": "\#42CBF4",
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
     },
     {
       "full_text": " ${cpu cpu0}%",
       "min_width": " 100%",
+      "name": "CPU Average",
       "align": "center",
-      "color": ${if_match ${cpu cpu0}<75}"\#FFFFFF"${else}"\#FF0000"${endif}
+      "color": ${if_match ${cpu cpu0}<75}"\#FFFFFF"${else}"\#FF0000"${endif},
+      "border": ${if_match ${cpu cpu0}<75}"\#2ECC71"${else}"\#FF0000"${endif},
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
     },
     {
       "full_text": "☰ ${memperc}%",
       "min_width": "☰ 100%",
+      "name": "RAM",
       "align": "center",
-      "color": ${if_match ${memperc}<75}"\#FFFFFF"${else}"\#FF0000"${endif}
+      "color": ${if_match ${memperc}<75}"\#FFFFFF"${else}"\#FF0000"${endif},
+      "border": ${if_match ${memperc}<75}"\#2ECC71"${else}"\#FF0000"${endif},
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
     },
 
 ${if_match ${battery_percent}>15}\
         ${if_match ${battery_percent}>35}\
             ${if_match ${battery_percent}>60}\
                 ${if_match ${battery_percent}>80}\
-                    # 100% ish
-                    { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#42F477" }, \
+                    ############################ 100% ish (80-100)
+                    { "full_text" : " <span fgcolor='\#2ECC71'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "80-100%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
                 ${else}\
-                    # less than 75%
-                    { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#A7F442"}, \
+                    ############################ less than 75% (60-79)
+                    { "full_text" : " <span fgcolor='\#A7F442'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "60-79%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
                 ${endif}\
             ${else}\
-                # less than 50%
-                { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#E2F442" }, \
+                ############################ less than 50% (35-59)
+                { "full_text" : " <span fgcolor='\#E2F442'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "35-59%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
             ${endif}\
         ${else}\
-            # 20ish % charge
-            { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#F4A142" }, \
+            ############################ 20ish % charge (15-34)
+            { "full_text" : " <span fgcolor='\#F4A142'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "15-34%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
         ${endif}\
     ${else}\
-        #empty battery
-        { "full_text" : " ${battery_percent}% ${battery_time}","min_width": " 100%","align": "left","color" : "\#FF0000" }, \
+        ############################ Empty battery (0-14)
+        { "full_text" : " <span fgcolor='\#FF0000'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "0-14%","align": "left","color" : "\#FFFFFF", "urgent": true,"markup": "pango" }, \
 ${endif}\
 
     {
-      "full_text": "${time %m/%d/%y %l:%M %p}",
-      "min_width": "12/12/12 12:12 PM",
+      "full_text": " ${time %m/%d/%y %l:%M %p}",
+      "min_width": " 12/12/12 12:12 PM",
+      "name": "DateTime",
       "align": "center",
-      "color": "\#FFFFFF"
+      "color": "\#FFFFFF",
+      "border": "\#42CBF4",
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
     }
 ],
 ]];
