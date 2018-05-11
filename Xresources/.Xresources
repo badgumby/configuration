@@ -1,5 +1,5 @@
 ! HiDPI
-Xft.dpi: 128
+Xft.dpi: 96
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight
@@ -15,7 +15,7 @@ rofi.dpi: 150
 ! scroll settings
 URxvt*saveLines:	10000
 URxvt*scrollbar:	true
-URxvt*thickness:	10
+URxvt*thickness:	20
 URxvt*scrollColor:	#1E1E1E
 URxvt*scrollBar_right:	true
 
@@ -25,23 +25,27 @@ URxvt*font:	xft:DejaVu Sans Mono for Powerline:size=12
 URxvt.transparent:	true
 URxvt.shading:      	30
 URxvt.depth:		32
-! URxvt.background:     #000000
-URxvt.foreground:       #ffffff
-URxvt.color0:           #3f3f3f
-URxvt.color1:           #705050
-URxvt.color2:           #00b45a
-URxvt.color3:           #dfcf8f
-URxvt.color4:           #506070
-URxvt.color5:           #dc8cc3
-URxvt.color6:           #8cd0d3
-URxvt.color7:           #dcdccc
-URxvt.color8:           #709080
-URxvt.color9:           #cc5454
-URxvt.color10:          #4d9f4d
-URxvt.color11:          #f0dfaf
-URxvt.color12:          #4186be
-URxvt.color13:          #ec93d3
-URxvt.color14:          #93e0e3
-URxvt.color15:          #000000
+! URxvt.background:	#000000
+URxvt.foreground:       #FFFFFF
+URxvt.color0:           #2C3E50
+URxvt.color1:           #E74C3C
+URxvt.color2:           #2ECC71
+URxvt.color3:           #F1C40F
+URxvt.color4:           #3498DB
+URxvt.color5:           #9B59B6
+URxvt.color6:           #1ABC9C
+URxvt.color7:           #E0E0E0
+URxvt.color8:           #95A5A6
+URxvt.color9:           #E74C3C
+URxvt.color10:          #2ECC71
+URxvt.color11:          #F1C40F
+URxvt.color12:          #3498DB
+URxvt.color13:          #9B59B6
+URxvt.color14:          #1ABC9C
+URxvt.color15:          #ECF0F1
+! Highlight background color
+URxvt*highlightColor: #2C3E50
+! Highlight foreground color
+URxvt*highlightTextColor: #FFFFFF
 
 ! end urxvt settings -------------------------------------------

@@ -36,7 +36,7 @@ conky.config = {
 conky.text = [[
 [
     {
-      "full_text": "<span font='font-logos'></span> ${exec uname -r | sed 's/-generic//'} ",
+      "full_text": " <span font='font-logos'></span> ${exec uname -r | sed 's/-generic//'} ",
       "color": "\#FFFFFF",
       "name": "Kernel Version",
       "markup": "pango",
@@ -47,7 +47,8 @@ conky.text = [[
       "border_left": 0
     },
     {
-      "full_text": " ${uptime} ",
+      "full_text": "  ${uptime_short} ",
+      "min_width": "  0h 00m",
       "color": "\#FFFFFF",
       "name": "Uptime",
       "border": "\#42CBF4",
@@ -68,8 +69,8 @@ ${if_up wlp59s0} {"full_text": " ${addr wlp59s0}","min_width": " 255.255.2
 ${endif}
 
     {
-      "full_text": " ⛃ ${fs_free /} ",
-      "min_width": " ⛃ 100.0G ",
+      "full_text": "  ${fs_free /} ",
+      "min_width": "  100.0G ",
       "name": "Root Volume Free",
       "align": "center",
       "color": "\#FFFFFF",
@@ -124,11 +125,11 @@ ${if_match ${battery_percent}>15}\
                     { "full_text" : " <span fgcolor='\#2ECC71'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "80-100%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
                 ${else}\
                     ############################ less than 75% (60-79)
-                    { "full_text" : " <span fgcolor='\#A7F442'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "60-79%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
+                    { "full_text" : " <span fgcolor='\#ACF441'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "60-79%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
                 ${endif}\
             ${else}\
                 ############################ less than 50% (35-59)
-                { "full_text" : " <span fgcolor='\#E2F442'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "35-59%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
+                { "full_text" : " <span fgcolor='\#EAE725'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "35-59%","align": "left","color" : "\#FFFFFF","markup": "pango" }, \
             ${endif}\
         ${else}\
             ############################ 20ish % charge (15-34)
@@ -136,12 +137,12 @@ ${if_match ${battery_percent}>15}\
         ${endif}\
     ${else}\
         ############################ Empty battery (0-14)
-        { "full_text" : " <span fgcolor='\#FF0000'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "0-14%","align": "left","color" : "\#FFFFFF", "urgent": true,"markup": "pango" }, \
+        { "full_text" : " <span fgcolor='\#F4A142'></span> ${battery_percent}% ${battery_time}","min_width": "  100%","name": "Battery","instance": "0-14%","align": "left","color" : "\#FFFFFF", "urgent": true,"markup": "pango" }, \
 ${endif}\
 
     {
-      "full_text": " ${time %m/%d/%y %l:%M %p}",
-      "min_width": " 12/12/12 12:12 PM",
+      "full_text": " ${time %m/%d/%y %l:%M %p} ",
+      "min_width": " 12/12/12 12:12 PM ",
       "name": "DateTime",
       "align": "center",
       "color": "\#FFFFFF",
