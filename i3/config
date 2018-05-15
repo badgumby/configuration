@@ -227,7 +227,9 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id ~/.config/i3/i3-startup
 
 # Startup applications
+exec --no-startup-id ~/.config/i3/locker.sh
 exec --no-startup-id pa-applet
+exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id remmina -i
 exec --no-startup-id pidgin
