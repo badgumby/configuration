@@ -58,9 +58,39 @@ conky.text = [[
       "border_left": 0
     },
 
-${if_up enp58s0f1} {"full_text": ${addr enp58s0f1},"min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF","border": "\#2ECC71","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},${else}\
-    ${if_up enp0s20f0u4u1i5} {"full_text": " ${addr enp0s20f0u4u1i5}","min_width": " 255.255.255.0","align": "center","color": "\#FFFFFF","border": "\#2ECC71","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},${else}\
-        {"full_text": " N/A  ","min_width": " N/A ","align": "center","color": "\#FFFFFF","border": "\#FF0000","border_bottom": 2,"border_top": 0,"border_right": 0,"border_left": 0},\
+${if_up enp58s0f1} {
+    "full_text": " ${addr enp58s0f1}",
+    "min_width": " 255.255.255.0",
+    "align": "center",
+    "color": "\#FFFFFF",
+    "border": "\#2ECC71",
+    "border_bottom": 2,
+    "border_top": 0,
+    "border_right": 0,
+    "border_left": 0
+    }, ${else}\
+    ${if_up enp0s20f0u4u1i5} {
+      "full_text": " ${addr enp0s20f0u4u1i5}",
+      "min_width": " 255.255.255.0",
+      "align": "center",
+      "color": "\#FFFFFF",
+      "border": "\#2ECC71",
+      "border_bottom": 2,
+      "border_top": 0,
+      "border_right": 0,
+      "border_left": 0
+      },${else}\
+        {
+          "full_text": " N/A  ",
+          "min_width": " N/A  ",
+          "align": "center",
+          "color": "\#FFFFFF",
+          "border": "\#FF0000",
+          "border_bottom": 2,
+          "border_top": 0,
+          "border_right": 0,
+          "border_left": 0
+          },\
     ${endif}
 ${endif}
 
