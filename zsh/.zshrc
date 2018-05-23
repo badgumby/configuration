@@ -2,14 +2,27 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/smarta/.oh-my-zsh
+  export ZSH=~/.oh-my-zsh
 
 export VISUAL="vim"
+export EDITOR="atom"
+export ANDROID_HOME="~/android/sdk"
+export TERMINAL="gnome-terminal"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
+
+#Line separator variable
+drawline=`printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -`
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+BOLD='\e[1m'
+NB='\e[21m' #No Bold
+NC='\033[0m' # No Color
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -99,22 +112,32 @@ source $ZSH/oh-my-zsh.sh
 ########## Aliases ##########
 #############################
 
+#VPN
+alias connect-vpn="sudo openconnect -c ~/certs/badgumby.pfx https://vpn.site.com"
+
 # Manual Mounts
 alias mount-smb="sudo mount -t cifs //servername/share /home/badgumby/servername -o username=badgumby,uid=badgumby,gid=badgumby"
 
 # Monitor setup
-alias triple-mirror='/home/badgumby/.screenlayout/Triple-mirror.sh'
-alias triple='/home/badgumby/.screenlayout/Triple.sh'
-alias single='/home/badgumby/.screenlayout/Single.sh'
+alias triple-mirror='~/.screenlayout/Triple-mirror.sh'
+alias triple='~/.screenlayout/Triple.sh'
+alias single='~/.screenlayout/Single.sh'
 
 # Default git config
 alias gitcommit='git commit -m " (╯°□°）╯︵ WTF DID YOU COMMIT BRO?"'
 
-alias yakyak='/home/badgumby/Apps/yakyak-linux-x64/yakyak &'
+alias yakyak='~/Apps/yakyak-linux-x64/yakyak &'
 alias passgen="correcthorse"
 
 # Pacman/Aura
 alias pac-update="sudo aura -Syux"
 alias aur-update="sudo aura -Ayux"
-alias pac-cleanup="sudo bash | pacman -Qdtq | pacman -Rs -"
+alias pac-cleanup="sudo pacman -Qdtq | sudo pacman -Rs -"
 alias pac-repo="reflector --country 'United States' --age 12 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+
+# Common-aliases
+alias zshrc="$EDITOR ~/.zshrc"
+alias i3config="$EDITOR ~/.config/i3/config"
+alias la="ls -lah"
+alias weather='curl "en.wttr.in/62703?0"'
+alias weather3='curl "en.wttr.in/62703?3"'

@@ -4,10 +4,12 @@ rofi.theme: ~/.config/rofi/themes/material.rasi
 rofi.modi: window,run,ssh
 ! Window opacity
 rofi.opacity: 50
+rofi.color-window: argb EE000000, argb: EE000000, argb: EE000000
+rofi.color-normal: argb: 00000000, #DEDEDE, argb: 00000000, #DEDEDE
 ! Window width
 rofi.width: 50
 ! Number of lines
-rofi.lines: 10
+rofi.lines: 5
 ! Border width
 rofi.bw: 1
 ! Location on screen

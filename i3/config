@@ -12,6 +12,7 @@
 # feh (set background), pa-applet-git (pulseaudio), i3lock-fancy-multimonitor (i3lock modifier),
 # thunar (file manager), ranger (console file manager), lxappearance (manage gtk themes),
 # ttf-font-logos (linux logos font pack -  < Arch Unicode), ttf-font-awesome-4 (required for conky configured fonts)
+# gnome-terminal-transparency (from AUR), xcompmgr (handle transparency)
 
 set $mod Mod4
 
@@ -48,8 +49,14 @@ mode $allWorkspaces {
     bindsym Escape mode "default"
 }
 
+# Print screen using custom script
+bindsym --release Print exec /usr/sbin/scrot-gui
+
 # Lock using i3lock mod
 bindsym Control+Mod1+Delete exec ~/.config/i3/i3lock-fancy-multimonitor/lock -n -p
+
+# Open calendar
+bindsym $mod+c exec zenity --calendar
 
 # Audio Controls (PulseAudio)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 -- +10% && killall -SIGUSR1 i3status
@@ -66,7 +73,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # Configure gaps
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 10
 smart_gaps on
 gaps inner 5
 gaps outer 2
@@ -90,8 +97,8 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# launch urxvt via F1
-bindsym F1 exec i3-sensible-terminal
+# launch gnome-terminal via F1
+bindsym F1 exec gnome-terminal
 
 # rofi launcher
 bindsym F2 exec --no-startup-id rofi -show run
@@ -227,6 +234,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id ~/.config/i3/i3-startup
 
 # Startup applications
+exec --no-startup-id xcompmgr -c -f -n
 exec --no-startup-id ~/.config/i3/locker.sh
 exec --no-startup-id pa-applet
 exec --no-startup-id blueman-applet
@@ -240,14 +248,16 @@ exec --no-startup-id yakyak
 # finds out, if available)
 # Example: position top status_command i3status
 bar {
+        i3bar_command i3bar -t
         position top
         font pango:DejaVu Sans Mono for Powerline 11, FontAwesome 11
-        status_command /home/smarta/.config/i3/conky-i3bar
+        status_command ~/.config/i3/conky-i3bar
         colors {
         separator #000000
-        focused_workspace #000000 #64CE02
-        active_workspace #FFFFFF #0686AD
-        inactive_workspace #FFFFFF #0686AD
-        urgent_workspace #FFFFFF #C4550B
+        focused_workspace  #000000 #64CE02 #FFFFFF
+        active_workspace   #FFFFFF #0686AD #FFFFFF
+        inactive_workspace #FFFFFF #0686AD #FFFFFF
+        urgent_workspace   #FFFFFF #C4550B #FFFFFF
+        binding_mode       #FFFFFF #900000 #FFFFFF
         }
 }
