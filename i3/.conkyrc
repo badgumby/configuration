@@ -31,6 +31,9 @@ conky.config = {
     -- number of cpu samples to average
     -- set to 1 to disable averaging
     cpu_avg_samples = 2,
+
+    -- conky.text to use for sensors of System76 machine
+    -- `sensors -f system76-isa-0000 | grep "CPU temp"` | sed 's/CPU temperature://' | sed 's/+//'
 };
 
 conky.text = [[
@@ -111,7 +114,7 @@ ${endif}
       "border_left": 0
     },
     {
-      "full_text": "  ${exec echo `sensors -f system76-isa-0000 | grep "CPU temp"` | sed 's/CPU temperature://' | sed 's/+//'} ",
+      "full_text": "  ${exec echo `sensors -f pch_skylake-virtual-0 | grep "temp1"` | sed 's/temp1://' | sed 's/+//' | sed 's/ //g'} ",
       "min_width": "  000.0°F ",
       "name": "CPU Temp",
       "align": "center",
