@@ -25,16 +25,16 @@ set $displayMode "Set display mode [s]ingle [t]riple [m]irror"
 bindsym $mod+x mode $displayMode
 mode $displayMode {
 
-    bindsym s exec "~/.screenlayout/Single.sh"; mode "default"
-    bindsym t exec "~/.screenlayout/Triple.sh"; mode "default"
-    bindsym m exec "~/.screenlayout/Triple-mirror.sh"; mode "default"
+    bindsym s exec "~/.config/screenlayout/Single.sh"; mode "default"
+    bindsym t exec "~/.config/screenlayout/Triple.sh"; mode "default"
+    bindsym m exec "~/.config/screenlayout/Triple-mirror.sh"; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
 # Move current workspaces to different display
-set $laptopDisplay "eDP1"
+set $laptopDisplay "eDP-1"
 set $monitor1 "DVI-I-1-1"
 set $monitor2 "DVI-I-2-2"
 set $allWorkspaces "Move current workspace to [l]aptop display, monitor [1], or monitor [2]. ESC or ENTER to cancel."
@@ -51,6 +51,7 @@ mode $allWorkspaces {
 
 # Print screen using custom script
 bindsym --release Print exec /usr/sbin/scrot-gui
+bindsym --release Control+Print exec /usr/sbin/scrot -s ~/test.png
 
 # Lock using i3lock mod
 bindsym Control+Mod1+Delete exec ~/.config/i3/i3lock-fancy-multimonitor/lock -n -p
@@ -81,6 +82,8 @@ gaps outer 2
 # Launch Apps in specific workspaces
 for_window [class="Remmina"] move container to workspace 4
 for_window [class="Pidgin"] move container to workspace 5
+for_window [class="Keybase"] move container to workspace 5
+for_window [class="whats-app"] move container to workspace 5
 for_window [class="VirtualBox"] move container to workspace 6
 
 # Workspace defaults
@@ -230,34 +233,37 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Launch Polybar
+exec --no-startup-id $HOME/.config/polybar/launch.sh
+
 # Run startup script (contains things to do on login)
 exec --no-startup-id ~/.config/i3/i3-startup
 
 # Startup applications
 exec --no-startup-id xcompmgr -c -f -n
 exec --no-startup-id ~/.config/i3/locker.sh
-exec --no-startup-id pa-applet
+exec --no-startup-id ~/git/paTray/paTray
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id remmina -i
 exec --no-startup-id pidgin
 exec --no-startup-id run_keybase
-exec --no-startup-id yakyak
+exec --no-startup-id whatsapp-nativefier
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 # Example: position top status_command i3status
-bar {
-        i3bar_command i3bar -t
-        position top
-        font pango:DejaVu Sans Mono for Powerline 11, FontAwesome 11
-        status_command ~/.config/i3/conky-i3bar
-        colors {
-        separator #000000
-        focused_workspace  #000000 #64CE02 #FFFFFF
-        active_workspace   #FFFFFF #0686AD #FFFFFF
-        inactive_workspace #FFFFFF #0686AD #FFFFFF
-        urgent_workspace   #FFFFFF #C4550B #FFFFFF
-        binding_mode       #FFFFFF #900000 #FFFFFF
-        }
-}
+#bar {
+#        i3bar_command i3bar -t
+#        position top
+#        font pango:DejaVu Sans Mono for Powerline 11, FontAwesome 11
+#        status_command ~/.config/i3/conky-i3bar
+#        colors {
+#        separator #000000
+#        focused_workspace  #000000 #64CE02 #FFFFFF
+#        active_workspace   #FFFFFF #0686AD #FFFFFF
+#        inactive_workspace #FFFFFF #0686AD #FFFFFF
+#        urgent_workspace   #FFFFFF #C4550B #FFFFFF
+#        binding_mode       #FFFFFF #900000 #FFFFFF
+#        }
+#}

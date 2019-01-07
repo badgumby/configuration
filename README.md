@@ -20,8 +20,14 @@ Configurations for various Linux and Windows things
 
 > Install mopidy-gmusic to use with Google Play Music
 
+###### polybar
+> Place files 'config' and 'launch.sh' in /home/$USER/.config/polybar/
+
 ###### rofi
 > Place file 'config' in /home/$USER/.config/rofi/
+
+###### screenlayout
+> Files are shell scripts to set predefined monitor configurations using xrandr
 
 ###### scrot-gui
 > Place file 'scrot-gui' in /usr/sbin/ and chmod +x. Bind to PrintScreen button.
@@ -30,9 +36,6 @@ Configurations for various Linux and Windows things
 
 ###### terminal-colors
 > Hexadecimal color codes for any terminal that doesn't support external schemes (tilda)
-
-###### xrandr
-> Files are shell scripts to set predefined monitor configurations using xrandr
 
 ###### zsh
 > Contains rc file for Z shell - uses oh-my-zsh for themes
