@@ -103,7 +103,7 @@ font-1 = FontAwesome:pixelsize=10;1
 font-2 = siji:pixelsize=10;1
 modules-left = i3
 modules-center = xwindow
-modules-right = updates-arch-combined running-kernel filesystem pulseaudio memory cpu wlan eth eth2 battery temperature date
+modules-right = updates-arch-combined running-kernel filesystem pulseaudio memory cpu wlan eth eth2 battery temperature date powermenu
 cursor-click = pointer
 cursor-scroll = ns-resize
 ;################################################################
@@ -146,7 +146,6 @@ card = intel_backlight
 format = <label>
 ;click-left = xrandr --output eDP-1 --brightness 1.0
 ;click-right = xrandr --output eDP-1 --brightness 0.4
-;################################################################
 label = %percentage%%
 ;################################################################
 [module/running-kernel]
@@ -158,7 +157,7 @@ click-right = google-chrome-stable https://www.archlinux.org/packages/core/x86_6
 [module/updates-arch-combined]
 type = custom/script
 label-active-font = 2
-exec = ~/.config/polybar/updates-arch-combined.sh
+exec = ~/.config/polybar/scripts/updates-arch-combined.sh
 interval = 120
 ;################################################################
 [module/xkeyboard]
@@ -231,7 +230,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f50a4d
+format-underline = #41a0f4
 label = %percentage:2%%
 label-active-font = 2
 ;################################################################
@@ -240,39 +239,39 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = #41a0f4
 label = %percentage_used%%
 label-active-font = 2
 ;################################################################
 [module/wlan]
-type = internal/network
-interface = wlp59s0
-interval = 3.0
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid% %signal%%
+type = custom/script
+exec = "~/.config/polybar/scripts/nics.sh wlp59s0"
+interval = 60
+format = <label>
+format-underline = #41a0f4
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
+label = %output%
 label-active-font = 2
-format-disconnected = N/A
-format-disconnected-underline = #f50a4d
-ramp-signal-0 = 
-ramp-signal-foreground = ${colors.foreground-alt}
 ;################################################################
 [module/eth]
 type = custom/script
-exec = "nmcli d show enp58s0f1 | grep 'IP4.ADDRESS' | awk '{ print $2 }'"
+exec = "~/.config/polybar/scripts/nics.sh enp58s0f1"
 interval = 60
 format = <label>
-format-underline = #9f78e1
+format-underline = #41a0f4
+format-prefix-foreground = ${colors.foreground-alt}
 format-prefix = " "
 label = %output%
 label-active-font = 2
 ;################################################################
 [module/eth2]
 type = custom/script
-exec = "nmcli d show enp0s20f0u4u1i5 | grep 'IP4.ADDRESS' | awk '{ print $2 }'"
+exec = "~/.config/polybar/scripts/nics.sh enp0s20f0u4u1i5"
 interval = 60
 format = <label>
-format-underline = #9f78e1
+format-underline = #41a0f4
+format-prefix-foreground = ${colors.foreground-alt}
 format-prefix = " "
 label = %output%
 label-active-font = 2
@@ -286,7 +285,7 @@ time = %I:%M %p
 time-alt = %H:%M:%S
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = #41a0f4
 label = %date% %time%
 ;################################################################
 [module/pulseaudio]
@@ -295,7 +294,7 @@ label-active-font = 2
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
-label-muted =  muted
+label-muted = 
 label-muted-foreground = #666
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -323,10 +322,10 @@ poll-interval = 5
 time-format = %H:%M
 format-charging = <ramp-capacity> <label-charging>
 label-charging = %percentage%% Charging
-format-charging-underline = #ffb52a
+format-charging-underline = #42f462
 format-discharging = <ramp-capacity> <label-discharging>
-label-discharging = %percentage%% Discharging
-format-discharging-underline = ${self.format-charging-underline}
+label-discharging = %percentage%%
+format-discharging-underline = #ffac28
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
@@ -340,11 +339,11 @@ ramp-capacity-foreground = ${colors.foreground-alt}
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 150
+warn-temperature = 60
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #42f462
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = #f50a4d
 label = %temperature-f%
 label-active-font = 2
 label-warn = %temperature-f%
@@ -361,25 +360,21 @@ expand-right = true
 format-spacing = 1
 label-open = 
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close =  Cancel
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = Reboot
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = Poweroff
 menu-0-1-exec = menu-open-2
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = confirm
-menu-1-1-exec = reboot
+menu-1-0 = %{F#ffb52a}Confirm%{F-}
+menu-1-0-exec = reboot
 
-menu-2-0 = confirm
+menu-2-0 = %{F#ffb52a}Confirm%{F-}
 menu-2-0-exec = poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
 ;################################################################
 [settings]
 screenchange-reload = true
