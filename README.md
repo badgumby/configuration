@@ -21,7 +21,9 @@ Configurations for various Linux and Windows things
 > Install mopidy-gmusic to use with Google Play Music
 
 ###### polybar
-> Place files 'config' and 'launch.sh' in /home/$USER/.config/polybar/
+> Place file 'config' in /home/$USER/.config/polybar/
+
+> Place file 'launch.sh', 'launch3.sh', 'updates-arch-combined.sh' and 'nics.sh' in /home/$USER/.config/polybar/
 
 ###### rofi
 > Place file 'config' in /home/$USER/.config/rofi/
