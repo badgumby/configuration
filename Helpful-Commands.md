@@ -17,13 +17,13 @@
    pacman -Qqe > pacman-ALL
    ```
 
-   Restore from backup `pacman-official` created in previous command:
+   Restore `pacman-official` packages from backup file:
 
    ```
    pacman -S --needed --noconfirm - < pacman-official
    ```
 
-   Restore from backup if `yay` is installed:
+   Restore ALL from backup if `yay` is installed:
 
    ```
    for app in `cat pacman-ALL`; do yay -S --needed "$app"; done

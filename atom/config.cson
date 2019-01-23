@@ -1,0 +1,28 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "ID_GOES_HERE"
+  "atom-terminal-powershell":
+    app: "/usr/sbin/gnome-terminal"
+  core:
+    disabledPackages: [
+      "wrap-guide"
+    ]
+    ignoredNames: [
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+    ]
+    telemetryConsent: "limited"
+  editor:
+    fontSize: 13
+  "exception-reporting":
+    userId: "ID_GOES_HERE"
+  "tree-view":
+    hideIgnoredNames: false
+    hideVcsIgnoredFiles: false
+  welcome:
+    showOnStartup: false
