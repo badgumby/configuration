@@ -1,10 +1,10 @@
-#### pacman
-   List installed official repo packages: `pacman -Qqettn`
+### pacman
+   List installed official repo packages: `pacman -Qqettn > pacman-official`
 
-   List installed AUR packages: `pacman -Qqettm`
+   List installed AUR packages: `pacman -Qqettm > pacman-aur`
 
-   Create backup list of AUR packages (bash): `pacman -Qqe | grep -v "$(pacman -Qqm)" > pacman.lst`
+   List ALL packages/dependencies: `pacman -Qqe > pacman-ALL`
 
-   Create backup list of AUR packages (fish): `pacman -Qqe | grep -v "(pacman -Qqm)" > pacman.lst`
+   Restore from backup `pacman-official` created in previous command: `pacman -S --needed --noconfirm - < pacman-official`
 
-   Restore from backup `pacman.lst` created in previous command (bash): `pacman -S --needed --noconfirm $(pacman -Qqe | grep -v "$(pacman -Qqm)")`
+   Restore from backup if `yay` is installed: `yay -Ss --needed --noconfirm < pacman-ALL`
