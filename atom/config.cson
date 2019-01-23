@@ -1,7 +1,7 @@
 "*":
   "atom-beautify":
     general:
-      _analyticsUserId: "ID_GOES_HERE"
+      _analyticsUserId: "ID"
   "atom-terminal-powershell":
     app: "/usr/sbin/gnome-terminal"
   core:
@@ -20,7 +20,13 @@
   editor:
     fontSize: 13
   "exception-reporting":
-    userId: "ID_GOES_HERE"
+    userId: "ID"
+  minimap:
+    plugins:
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+      pigments: true
+      pigmentsDecorationsZIndex: 0
   "tree-view":
     hideIgnoredNames: false
     hideVcsIgnoredFiles: false
