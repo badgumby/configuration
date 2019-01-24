@@ -2,7 +2,7 @@
 Configurations for various Linux and Windows things
 
 ###### atom
-> Place file 'config.cson' in /home/$USER/.atom/ directory
+> Place files 'config.cson' and 'keymap.cson' in /home/$USER/.atom/ directory
 
 > 'package-list' is a listed of currently installed atom packages and themes
 
