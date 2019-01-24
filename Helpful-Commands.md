@@ -28,3 +28,11 @@
    ```
    for app in `cat pacman-ALL`; do yay -S --needed "$app"; done
    ```
+
+### Random stuff
+   Add characters to the beginning, and end, of each line of a text file
+
+   ```
+   sed -i 's|^|"|' array.txt
+   sed -i 's|$|",|' array.txt
+   ```
