@@ -9,6 +9,11 @@ Configurations for various Linux and Windows things
 ###### conky
 > Place file 'conky.conf' in /etc/conky/ or edit exisitng /home/$USER/.conkyrc with content
 
+###### cowsay
+> Place file 'quotes.txt' in /home/$USER/.config/cowsay/
+
+> Add whatever 'quotes' you want to be displayed when you start a terminal
+
 ###### hunter
 > Place file 'hunter' in /usr/sbin/ and chmod +x
 
