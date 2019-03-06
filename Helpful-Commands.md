@@ -36,3 +36,7 @@
    sed -i 's|^|"|' array.txt
    sed -i 's|$|",|' array.txt
    ```
+
+   Clear IcedTea cache
+
+   `rm -rf /home/USER/.cache/icedtea-web/cache/*`
