@@ -29,6 +29,23 @@
    for app in `cat pacman-ALL`; do yay -S --needed "$app"; done
    ```
 
+### IPtables
+  NAT port 80 to 8080
+
+  `sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to-destination :8080`
+
+  Save to config
+
+  `sudo iptables-save`
+
+  List all NAT rules
+
+  `sudo iptables -t nat -L --line-numbers`
+
+  Delete NAT rule
+
+  `sudo iptables -t nat -D CHAIN_NAME LINE_NUMBER`
+
 ### Random stuff
    Add characters to the beginning, and end, of each line of a text file
 
