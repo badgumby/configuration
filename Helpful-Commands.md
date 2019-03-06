@@ -30,13 +30,15 @@
    ```
 
 ### IPtables
+  Install `iptables-persistent`
+
   NAT port 80 to 8080
 
   `sudo iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j DNAT --to-destination :8080`
 
   Save to config
 
-  `sudo iptables-save`
+  `sudo iptables-save > /etc/iptables/rules.v4`
 
   List all NAT rules
 
