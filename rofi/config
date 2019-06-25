@@ -41,7 +41,7 @@ rofi.levenshtein-sort: false
 ! Set case-sensitivity
 rofi.case-sensitive: false
 ! Enable sidebar-mode
-rofi.sidebar-mode: false
+!rofi.mode-switcher: false
 ! Set lazy filter limit
 rofi.lazy-filter-limit: 15000
 ! Row height (in chars)

@@ -42,7 +42,7 @@ window {
 }
 
 mainbox {
-	children: [inputbar, message, sidebar, listview];
+	children: [inputbar, message, mode-switcher, listview];
 	spacing: 5px;
 	/*margin: 10%;*/
 	padding: 5px 0;
@@ -74,7 +74,7 @@ case-indicator {
 	text-color: @base0F;
 }
 
-sidebar, message {
+mode-switcher, message {
 	border: 1px 0;
 	border-color: @base0D;
 }
