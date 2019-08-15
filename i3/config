@@ -12,6 +12,7 @@
 # thunar (file manager), ranger (console file manager), polo-bin (from AUR - file manager), lxappearance (manage gtk themes),
 # ttf-font-logos (linux logos font pack -  < Arch Unicode), ttf-font-awesome-4 (required for conky/polybar configured fonts)
 # gnome-terminal-transparency (from AUR), xcompmgr (handle transparency)
+# solaar (Logitech device manager for Linux)
 
 set $mod Mod4
 
@@ -248,6 +249,7 @@ exec --no-startup-id ~/.config/i3/i3-startup
 exec --no-startup-id xcompmgr -c -f -n
 exec --no-startup-id ~/.config/i3/locker.sh
 exec --no-startup-id ~/git/paTray/paTray
+exec --no-startup-id solaar
 exec --no-startup-id blueman-applet
 exec --no-startup-id nm-applet
 exec --no-startup-id remmina -i
