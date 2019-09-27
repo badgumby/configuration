@@ -69,22 +69,27 @@ Search and replace a string within entire document
 > Remove the `c` from the end of line to remove confirmation before changing each string found
 
 ### Random stuff
-   Add characters to the beginning, and end, of each line of a text file
 
-   ```
-   sed -i 's|^|"|' array.txt
-   sed -i 's|$|",|' array.txt
-   ```
+Add characters to the beginning, and end, of each line of a text file
 
-   Clear IcedTea cache
+```
+sed -i 's|^|"|' array.txt
+sed -i 's|$|",|' array.txt
+```
 
-   `rm -rf /home/USER/.cache/icedtea-web/cache/*`
+Clear IcedTea cache
+`rm -rf /home/USER/.cache/icedtea-web/cache/*`
 
-   Update default applications on Linux
+Update default applications on Linux
+```
+~/.config/mimeapps.list
+```
 
-   ```
-   ~/.config/mimeapps.list
-   ```
+Flash Player on Linux
+> Download flash player tar.gz from Adobe website
+```
+sudo cp libflashplayer.so /usr/lib/mozilla/plugins/libflashplayer.so
+```
 
 ### Useful Linux applications
 
