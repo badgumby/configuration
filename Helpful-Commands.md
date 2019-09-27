@@ -50,6 +50,24 @@
 
   `sudo iptables -t nat -D CHAIN_NAME LINE_NUMBER`
 
+### VIM Tips
+
+Search and replace a string within line range
+
+> Example searches from line 1 to line 20
+
+```
+:1,20 s/search_string/replace_string/gc
+```
+
+Search and replace a string within entire document
+
+```
+:%s/search_string/replace_string/gc
+```
+
+> Remove the `c` from the end of line to remove confirmation before changing each string found
+
 ### Random stuff
    Add characters to the beginning, and end, of each line of a text file
 
@@ -61,3 +79,9 @@
    Clear IcedTea cache
 
    `rm -rf /home/USER/.cache/icedtea-web/cache/*`
+
+   Update default applications on Linux
+
+   ```
+   ~/.config/mimeapps.list
+   ```
