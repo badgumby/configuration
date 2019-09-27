@@ -85,3 +85,13 @@ Search and replace a string within entire document
    ```
    ~/.config/mimeapps.list
    ```
+
+### Useful Linux applications
+
+##### lsdesktopf
+
+Searches computer for all desktop files that can be used for mimeapps
+
+```
+lsdesktopf --list | grep -i firefox
+```
