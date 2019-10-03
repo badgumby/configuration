@@ -12,7 +12,7 @@
 # thunar (file manager), ranger (console file manager), polo-bin (from AUR - file manager), lxappearance (manage gtk themes),
 # ttf-font-logos (linux logos font pack -  < Arch Unicode), ttf-font-awesome-4 (required for conky/polybar configured fonts)
 # gnome-terminal-transparency (from AUR), xcompmgr (handle transparency)
-# solaar (Logitech device manager for Linux)
+# archlinux-java (change java runtime), solaar (Logitech device manager for Linux)
 
 set $mod Mod4
 
@@ -88,7 +88,7 @@ gaps outer 2
 # Launch Apps in specific workspaces
 for_window [class="Remmina"] move container to workspace 4
 for_window [class="Pidgin"] move container to workspace 5
-for_window [class="Keybase"] move container to workspace 5
+#for_window [class="Keybase"] move container to workspace 5
 for_window [class="whats-app"] move container to workspace 5
 for_window [class="VirtualBox"] move container to workspace 6
 
@@ -111,6 +111,12 @@ bindsym F1 exec gnome-terminal
 
 # rofi launcher
 bindsym F2 exec --no-startup-id rofi -show run
+
+# launch gnome-calendar via F8
+bindsym F8 exec mate-calc
+
+# launch gnome-calendar via F9
+bindsym F9 exec gnome-calendar
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
