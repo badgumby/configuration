@@ -1,33 +1,78 @@
 ### pacman
-   List installed official repo packages:
 
-   ```
-   pacman -Qqettn > pacman-official
-   ```
+List installed official repo packages:
 
-   List installed AUR packages:
+```
+pacman -Qqettn > pacman-official
+```
 
-   ```
-   pacman -Qqettm > pacman-aur
-   ```
+List installed AUR packages:
 
-   List ALL packages/dependencies:
+```
+pacman -Qqettm > pacman-aur
+```
 
-   ```
-   pacman -Qqe > pacman-ALL
-   ```
+List ALL packages/dependencies:
 
-   Restore `pacman-official` packages from backup file:
+```
+pacman -Qqe > pacman-ALL
+```
 
-   ```
-   pacman -S --needed --noconfirm - < pacman-official
-   ```
+Restore `pacman-official` packages from backup file:
 
-   Restore ALL from backup if `yay` is installed:
+```
+pacman -S --needed --noconfirm - < pacman-official
+```
 
-   ```
-   for app in `cat pacman-ALL`; do yay -S --needed "$app"; done
-   ```
+Restore ALL from backup if `yay` is installed:
+
+```
+for app in `cat pacman-ALL`; do yay -S --needed "$app"; done
+```
+
+##### Downgrade all packages back to a specific date
+
+Move `/etc/pacman.conf` and `/etc/pacman.d/mirrorlist` to backups
+
+```
+sudo mv /etc/pacman.conf /etc/pacman.conf.bak
+sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
+```
+
+Create a new `/etc/pacman.conf` file with the following information
+
+```
+[options]
+Architecture = auto
+
+[core]
+SigLevel = PackageRequired
+Server=https://archive.archlinux.org/repos/2019/10/07/$repo/os/$arch
+
+[extra]
+SigLevel = PackageRequired
+Server=https://archive.archlinux.org/repos/2019/10/07/$repo/os/$arch
+
+[community]
+SigLevel = PackageRequired
+Server=https://archive.archlinux.org/repos/2019/10/07/$repo/os/$arch
+```
+
+> Modify the date to match your preferred rollback date
+
+Create a new `/etc/pacman.d/mirrorlist` file with the following information
+
+```
+> Modify the date to match your preferred rollback date
+```
+
+> Modify the date to match your preferred rollback date
+
+Now you can issue the command to refresh the pacman package list, and then update
+
+```
+sudo pacman -Syyuu
+```
 
 ### IPtables
   Install `iptables-persistent`
