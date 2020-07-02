@@ -1,0 +1,26 @@
+ {
+            "name" : "Gumby",
+        
+            "cursorColor": "#FFFFFF",
+            "selectionBackground": "#FFFFFF",
+        
+            "background" : "#2c3e50",
+            "foreground" : "#c7c7c7",
+        
+            "black" : "#2c3e50",
+            "blue" : "#3498db",
+            "cyan" : "#1abc9c",
+            "green" : "#2ecc71",
+            "purple" : "#9b59b6",
+            "red" : "#e74c3c",
+            "white" : "#e0e0e0",
+            "yellow" : "#f1c40f",
+            "brightBlack" : "#95a5a6",
+            "brightBlue" : "#3498db",
+            "brightCyan" : "#1abc9c",
+            "brightGreen" : "#2ecc71",
+            "brightPurple" : "#9b59b6",
+            "brightRed" : "#ff6e67",
+            "brightWhite" : "#ecf0f1",
+            "brightYellow" : "#f1c40f"
+}
