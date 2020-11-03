@@ -51,5 +51,9 @@ Configurations for various Linux and Windows things
 
 > Also includes some config files for different terminals
 
+###### vscode
+
+> Add `settings.json` via the Command Palette `Preferences: Open Settings (JSON)`
+
 ###### zsh
 > Contains rc file for Z shell - uses oh-my-zsh for themes
