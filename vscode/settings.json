@@ -1,0 +1,42 @@
+{
+    "files.exclude": {
+        "**/.git": false
+    },
+    "files.associations": {
+        "*.audit": "xml"
+    },
+    "editor.wordWrap": "on",
+    "editor.wrappingIndent": "indent",
+    "git.defaultCloneDirectory": "",
+	"workbench.startupEditor": "newUntitledFile",
+    "editor.detectIndentation": false,
+	"editor.insertSpaces": false,
+	"terminal.integrated.fontFamily": "DejaVu Sans Mono for Powerline",
+	"terminal.integrated.fontSize": 12,
+	"editor.fontFamily": "DejaVu Sans Mono for Powerline, 'Courier New', monospace",
+	"editor.fontSize": 13,
+	"explorer.compactFolders": false,
+	"window.zoomLevel": 0,
+	"workbench.colorTheme": "Dank Neon",
+	"workbench.colorCustomizations": {
+		"editor.background": "#24262e",
+		"terminal.background":"#24262e",
+		"terminal.foreground":"#c7c7c7",
+		"terminal.ansiBrightBlack":"#95a5a6",
+		"terminal.ansiBrightBlue":"#3498db",
+		"terminal.ansiBrightCyan":"#1abc9c",
+		"terminal.ansiBrightGreen":"#2ecc71",
+		"terminal.ansiBrightMagenta":"#9b59b6",
+		"terminal.ansiBrightRed":"#ff6e67",
+		"terminal.ansiBrightWhite":"#ecf0f1",
+		"terminal.ansiBrightYellow":"#f1c40f",
+		"terminal.ansiBlack":"#2c3e50",
+		"terminal.ansiBlue": "#3498db",
+		"terminal.ansiCyan":"#1abc9c",
+		"terminal.ansiGreen":"#2ecc71",
+		"terminal.ansiMagenta":"#9b59b6",
+		"terminal.ansiRed":"#ff6e67",
+		"terminal.ansiWhite":"#e0e0e0",
+		"terminal.ansiYellow":"#f1c40f"
+	}
+}
