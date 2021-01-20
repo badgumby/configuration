@@ -115,6 +115,12 @@ Search and replace a string within entire document
 
 ### Random stuff
 
+Connect to serial console on Linux/MacOS via `screen`
+
+```sh
+screen /dev/{usb/cu device} {baudrate}
+```
+
 Add characters to the beginning, and end, of each line of a text file
 
 ```
