@@ -51,6 +51,10 @@ Configurations for various Linux and Windows things
 
 > Also includes some config files for different terminals
 
+###### vim
+
+> .vimrc goes in the user directory ~/
+
 ###### vscode
 
 > Add `settings.json` via the Command Palette `Preferences: Open Settings (JSON)`
