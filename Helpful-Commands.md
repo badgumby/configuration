@@ -151,3 +151,21 @@ Searches computer for all desktop files that can be used for mimeapps
 ```
 lsdesktopf --list | grep -i firefox
 ```
+
+### Passwordless `su` to a specific user based on user or group
+
+> /etc/pam.d/su
+
+```sh
+auth		[success=ignore default=1]	pam_succeed_if.so	user = oracle
+#auth		sufficient	pam_succeed_if.so	use_uid user = it
+auth		sufficient	pam_succeed_if.so	use_uid user ingroup suoracle
+```
+
+### Passwordless `sudo su` to a specific user
+
+> /etc/sudoers.d/custom_config
+
+```sh
+it ALL = (root) NOPASSWD: /bin/su - 
+```
