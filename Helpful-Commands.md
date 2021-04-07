@@ -170,7 +170,9 @@ auth		sufficient	pam_succeed_if.so	use_uid user ingroup suoracle
 it ALL = (root) NOPASSWD: /bin/su - 
 ```
 
-### Manual certbot usage (Let's Encrypt)
+### Let's Encrypt Certificates
+
+#### Manual certbot usage
 
 This method will require you to create a public DNS TXT record similar to `_acme-challenge.my.site.com`
 
