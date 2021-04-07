@@ -169,3 +169,9 @@ auth		sufficient	pam_succeed_if.so	use_uid user ingroup suoracle
 ```sh
 it ALL = (root) NOPASSWD: /bin/su - 
 ```
+
+### Manual certbot usage (Let's Encrypt)
+
+This method will require you to create a public DNS TXT record
+
+> sudo certbot -d my.site.com --manual --preferred-challenges dns certonly
