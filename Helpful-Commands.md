@@ -172,6 +172,6 @@ it ALL = (root) NOPASSWD: /bin/su -
 
 ### Manual certbot usage (Let's Encrypt)
 
-This method will require you to create a public DNS TXT record
+This method will require you to create a public DNS TXT record similar to `_acme-challenge.my.site.com`
 
 > sudo certbot -d my.site.com --manual --preferred-challenges dns certonly
