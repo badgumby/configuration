@@ -53,3 +53,21 @@ omf install agnoster
 Preferred font: [DejaVuSansMono](https://github.com/powerline/fonts/blob/master/DejaVuSansMono/DejaVu%20Sans%20Mono%20for%20Powerline.ttf)
 
 ---
+
+### Switch between integrated and discrete graphics
+
+```
+# Always use the integrated graphics card
+sudo pmset -a gpuswitch 0
+
+# Always use the discrete graphics card
+sudo pmset -a gpuswitch 1
+
+# Automatically switch between discrete and integrated graphics card (this is your laptop's default setting)
+sudo pmset -a gpuswitch 2
+```
+
+#### Flags for setting graphics to specific modes:
+- While charging: -c
+- While on battery: -b
+- Change for all modes: -a
