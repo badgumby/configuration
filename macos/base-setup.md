@@ -1,6 +1,6 @@
 # Basic setup for my MacOS layout
 
-### Packages to install
+## Packages to install
 
 #### [Brew](https://brew.sh)
 
@@ -54,7 +54,7 @@ Preferred font: [DejaVuSansMono](https://github.com/powerline/fonts/blob/master/
 
 ---
 
-### Switch between integrated and discrete graphics
+## Switch between integrated and discrete graphics
 
 ```
 # Always use the integrated graphics card
