@@ -71,3 +71,11 @@ sudo pmset -a gpuswitch 2
 - While charging: -c
 - While on battery: -b
 - Change for all modes: -a
+
+## Networking
+
+### Static Routes
+
+```sh
+sudo route add -host {host ip} {gateway ip}
+```
