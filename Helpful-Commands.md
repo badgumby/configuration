@@ -177,3 +177,59 @@ it ALL = (root) NOPASSWD: /bin/su -
 This method will require you to create a public DNS TXT record similar to `_acme-challenge.my.site.com`
 
 > sudo certbot -d my.site.com --manual --preferred-challenges dns certonly
+
+### DreamHost
+
+#### Update DNS via API
+
+```sh
+#!/bin/bash
+
+# On RaspPi install uuid-runtime for uuidgen command
+# Generate a API key from the DreamHost Panel: https://panel.dreamhost.com/index.cgi?tree=api
+
+KEY='KEY_GOES_HERE'
+DNS_RECORD='my.website.com'
+DNS_RECORD_REGEX='[^.]my\.website\.com'
+COMMENT='Server' # No spaces
+CURRENT_IP=`curl -s https://ip.badgumby.com/?ip`
+UUID=`uuidgen`
+CMD0='dns-list_records'
+CMD1='dns-remove_record'
+CMD2='dns-add_record'
+
+date
+echo "NEW IP: $CURRENT_IP"
+
+# Get all records
+LINK="https://api.dreamhost.com/?key=$KEY&unique_id=$UUID&cmd=$CMD0"
+RESPONSE=`curl -s -X GET "$LINK"`
+
+# Find old record
+OLD_IP=`echo "$RESPONSE" | grep $DNS_RECORD_REGEX | awk '{ print $5 }'`
+echo "OLD IP: $OLD_IP"
+
+# Check if it's changed
+if [ "$CURRENT_IP" = "$OLD_IP" ]; then
+  echo "Server IP matches current. Exiting."
+  exit
+else
+  echo "New IP detected. Updating..."
+fi
+
+# Remove record
+UUID=`uuidgen`
+ARGS="record=$DNS_RECORD&type=A&value=$OLD_IP"
+LINK="https://api.dreamhost.com/?key=$KEY&unique_id=$UUID&cmd=$CMD1&$ARGS"
+REMOVE_RESPONSE=`curl -s -X GET "$LINK"`
+
+echo $REMOVE_RESPONSE
+
+# Add record
+UUID=`uuidgen`
+ARGS="record=$DNS_RECORD&type=A&value=$CURRENT_IP&comment=$COMMENT"
+LINK="https://api.dreamhost.com/?key=$KEY&unique_id=$UUID&cmd=$CMD2&$ARGS"
+ADD_RESPONSE=`curl -s -X GET "$LINK"`
+
+echo $ADD_RESPONSE
+```
