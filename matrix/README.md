@@ -63,7 +63,7 @@ ansible-playbook -i inventory/hosts setup.yml --tags=self-check
 Register initial admin user.
 
 ```sh
-/matrix/synapse/bin/register-user <your-username> <your-password> <admin access: 0 or 1>
+sudo /matrix/synapse/bin/register-user <your-username> <your-password> <admin access: 0 or 1>
 ```
 
 Generate token link for self-registration.
@@ -83,5 +83,5 @@ ansible-playbook -i inventory/hosts setup.yml --tags=list-matrix-registration-to
 Change user administrator privileges
 
 ```sh
-/usr/local/bin/matrix-change-user-admin-status <username> <0/1>
+sudo /usr/local/bin/matrix-change-user-admin-status <username> <0/1>
 ```
