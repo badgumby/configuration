@@ -46,6 +46,28 @@ matrix_coturn_turn_external_ip_address: $instance_external_ip_address
 # Enable matrix registration with token only
 matrix_registration_enabled: true
 matrix_registration_admin_secret: "ENTER_SECRET_FROM_pwgen"
+
+ # If set to 'true', removes the need for authentication to access the server's 
+ # public rooms directory through the client API, meaning that anyone can 
+ # query the room directory. Defaults to 'false'. 
+ # 
+ allow_public_rooms_without_auth: false
+
+# If set to 'true', allows any other homeserver to fetch the server's public 
+ # rooms directory via federation. Defaults to 'false'. 
+ # 
+ allow_public_rooms_over_federation: false
+
+# Restrict federation to the following whitelist of domains. 
+ # N.B. we recommend also firewalling your federation listener to limit 
+ # inbound federation traffic as early as possible, rather than relying 
+ # purely on this application-layer restriction.  If not specified, the 
+ # default is to whitelist everything. 
+ # 
+ #federation_domain_whitelist: 
+ #  - lon.example.com 
+ #  - nyc.example.com 
+ #  - syd.example.com 
 ```
 
 ### Make roles and run playbooks
