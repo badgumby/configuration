@@ -1,5 +1,9 @@
 # Basic setup for my MacOS layout
 
+## Keybindings (Fix Home/End keys)
+
+Place the `DefaultKeyBinding.dict` file in `~/Library/KeyBindings`
+
 ## Packages to install
 
 #### [Brew](https://brew.sh)
